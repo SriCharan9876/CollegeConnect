@@ -1,6 +1,10 @@
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import collegeRoutes from "./routes/collegeRoutes";
+import authRoutes from "./routes/authRoutes";
+import userRoutes from "./routes/userRoutes";
+import discussionRoutes from "./routes/discussionRoutes";
 
 const app = express();
 
@@ -8,9 +12,12 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/colleges", collegeRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/discussion", discussionRoutes);
 
 app.get("/", (req, res) => {
-  res.send("API running 🚀");
+  res.send("API is online.");
 });
 
 const PORT = process.env.PORT || 5000;
