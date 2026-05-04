@@ -15,7 +15,7 @@ export default function Home() {
   const [course, setCourse] = useState("");
   const [minFees, setMinFees] = useState("");
   const [maxFees, setMaxFees] = useState("");
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<number[]>([]);
 
   const router = useRouter();
 
@@ -43,7 +43,7 @@ export default function Home() {
     fetchSavedColleges();
   }, []);
 
-  const handleCompare = (id) => {
+  const handleCompare = (id: number) => {
     let updated = [...selected];
 
     if (updated.includes(id)) {
