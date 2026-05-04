@@ -1,10 +1,11 @@
+import { Request, Response } from "express";
 import * as db from "../db/collegeQueries";
 import { sql } from "../db/index";
 
 /**
  * GET /colleges
  */
-export const fetchColleges = async (req, res) => {
+export const fetchColleges = async (req: Request, res: Response) => {
   try {
     const { search, location, course, exam, minFees, maxFees } = req.query;
 
@@ -28,7 +29,7 @@ export const fetchColleges = async (req, res) => {
 /**
  * GET /colleges/:id
  */
-export const fetchCollegeById = async (req, res) => {
+export const fetchCollegeById = async (req: Request, res: Response) => {
   try {
     const id = Number(req.params.id);
 
@@ -53,7 +54,7 @@ export const fetchCollegeById = async (req, res) => {
 /**
  * POST /colleges/compare
  */
-export const compareColleges = async (req, res) => {
+export const compareColleges = async (req: Request, res: Response) => {
   try {
     const { ids } = req.body;
 
@@ -74,7 +75,7 @@ export const compareColleges = async (req, res) => {
 /**
  * POST /colleges/:id/reviews
  */
-export const addReview = async (req, res) => {
+export const addReview = async (req : Request, res: Response) => {
   try {
     const collegeId = Number(req.params.id);
     const userId = req.user.id;

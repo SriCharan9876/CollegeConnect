@@ -1,9 +1,10 @@
+import { Request, Response } from "express";
 import { sql } from "../db/index";
 
 /**
  * Ask Question
  */
-export const askQuestion = async (req, res) => {
+export const askQuestion = async (req: Request, res: Response) => {
   const userId = req.user.id;
   const { title, description, collegeId } = req.body;
 
@@ -18,7 +19,7 @@ export const askQuestion = async (req, res) => {
 /**
  * Get all questions
  */
-export const getQuestions = async (req, res) => {
+export const getQuestions = async (req: Request, res: Response) => {
   const data = await sql`
     SELECT q.*, u.username, c.name AS college_name
     FROM questions q
@@ -33,7 +34,7 @@ export const getQuestions = async (req, res) => {
 /**
  * Get single question + answers
  */
-export const getQuestionById = async (req, res) => {
+export const getQuestionById = async (req: Request, res: Response) => {
   const id = req.params.id;
 
   const question = await sql`
@@ -59,7 +60,7 @@ export const getQuestionById = async (req, res) => {
 /**
  * Answer question
  */
-export const answerQuestion = async (req, res) => {
+export const answerQuestion = async (req: Request, res: Response) => {
   const userId = req.user.id;
   const { questionId, answer } = req.body;
 

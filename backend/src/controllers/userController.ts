@@ -1,6 +1,7 @@
+import { Request, Response } from "express";
 import { sql } from "../db/index";
 
-export const getMe = async (req, res) => {
+export const getMe = async (req: Request, res: Response) => {
   const userId = req.user.id;
   try {
     const user = await sql`
@@ -13,7 +14,7 @@ export const getMe = async (req, res) => {
   }
 };
 
-export const saveCollege = async (req, res) => {
+export const saveCollege = async (req: Request, res: Response) => {
   const userId = req.user.id;
   const { collegeId } = req.body;
 
@@ -34,7 +35,7 @@ export const saveCollege = async (req, res) => {
   }
 };
 
-export const getSavedColleges = async (req, res) => {
+export const getSavedColleges = async (req: Request, res: Response) => {
   const userId = req.user.id;
 
   try {
@@ -49,7 +50,7 @@ export const getSavedColleges = async (req, res) => {
   }
 };
 
-export const removeSavedCollege = async (req, res) => {
+export const removeSavedCollege = async (req: Request, res: Response) => {
   const userId = req.user.id;
   const { collegeId } = req.params;
 
@@ -64,7 +65,7 @@ export const removeSavedCollege = async (req, res) => {
   }
 };
 
-export const saveComparison = async (req, res) => {
+export const saveComparison = async (req: Request, res: Response) => {
   const userId = req.user.id;
   const { ids } = req.body;
 
@@ -80,7 +81,7 @@ export const saveComparison = async (req, res) => {
   }
 };
 
-export const getSavedComparisons = async (req, res) => {
+export const getSavedComparisons = async (req: Request, res: Response) => {
   const userId = req.user.id;
 
   try {
@@ -94,7 +95,7 @@ export const getSavedComparisons = async (req, res) => {
   }
 };
 
-export const removeSavedComparison = async (req, res) => {
+export const removeSavedComparison = async (req : Request, res: Response) => {
   const userId = req.user.id;
   const { id } = req.params;
 

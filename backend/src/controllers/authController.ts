@@ -1,8 +1,9 @@
+import { Request, Response } from "express";
 import { sql } from "../db/index";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-export const signup = async (req, res) => {
+export const signup = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
 
   const hashed = await bcrypt.hash(password, 10);
@@ -18,7 +19,7 @@ export const signup = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+export const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   const user = await sql`
