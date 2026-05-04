@@ -1,12 +1,12 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import API from "@/services/api";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
-export default function ComparePage() {
+function CompareContent() {
   const params = useSearchParams();
   const ids = params.get("ids");
 
@@ -188,5 +188,17 @@ export default function ComparePage() {
         </table>
       </div>
     </div>
+  );
+}
+
+export default function ComparePage() {
+  return (
+    <Suspense fallback={
+      <div className="flex justify-center items-center h-64 w-full">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 dark:border-emerald-400"></div>
+      </div>
+    }>
+      <CompareContent />
+    </Suspense>
   );
 }
