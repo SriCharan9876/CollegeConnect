@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Predictor() {
   const [rank, setRank] = useState("");
   const [exam, setExam] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -20,8 +20,8 @@ export default function Predictor() {
       const endpoint = exam ? `/colleges?exam=${encodeURIComponent(exam)}` : "/colleges";
       const res = await API.get(endpoint);
 
-      const filtered = res.data.filter((c) =>
-        c.exams?.some((e) => 
+      const filtered = res.data.filter((c: any) =>
+        c.exams?.some((e: any) => 
           (exam ? e.exam_name === exam : true) && 
           Number(rank) <= e.cutoff_rank
         )
@@ -125,7 +125,7 @@ export default function Predictor() {
                       
                       {/* Show which exam matched */}
                       <div className="mt-3 flex flex-wrap gap-1">
-                        {c.exams?.filter(e => (exam ? e.exam_name === exam : true) && Number(rank) <= e.cutoff_rank).map((match, idx) => (
+                        {c.exams?.filter((e: any) => (exam ? e.exam_name === exam : true) && Number(rank) <= e.cutoff_rank).map((match: any, idx: number) => (
                           <span key={idx} className="inline-block text-xs font-medium bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 px-2 py-1 rounded">
                             {match.exam_name}: ≤ {match.cutoff_rank}
                           </span>
