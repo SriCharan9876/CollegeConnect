@@ -13,7 +13,8 @@ app.use(
     origin: [
       "https://collegeconnect-5hefgip7o-sri-charans-projects-cc97bb75.vercel.app",
       "https://collegeconnect-git-main-sri-charans-projects-cc97bb75.vercel.app",
-      "http://localhost:3000"
+      "https://collegeconnect-nu.vercel.app",
+      "https://collegeconnect-sri-charans-projects-cc97bb75.vercel.app",
     ],
     credentials: true,
   })
