@@ -1,6 +1,12 @@
 "use client";
 
-export default function SearchBar({ search, setSearch, onSearch }) {
+interface SearchBarProps {
+  search: string;
+  setSearch: (val: string) => void;
+  onSearch: () => void;
+}
+
+export default function SearchBar({ search, setSearch, onSearch }: SearchBarProps) {
   return (
     <div className="flex w-full max-w-2xl mx-auto shadow-sm rounded-full overflow-hidden border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 focus-within:ring-2 focus-within:ring-emerald-500 focus-within:border-emerald-500 transition-all duration-300">
       <div className="pl-4 flex items-center justify-center text-gray-400 dark:text-gray-500">
