@@ -10,10 +10,10 @@ export const fetchColleges = async (req: Request, res: Response) => {
     const { search, location, course, exam, minFees, maxFees } = req.query;
 
     const data = await db.getColleges(
-      search,
-      location,
-      course,
-      exam,
+      search as string,
+      location as string,
+      course as string,
+      exam as string,
       Number(minFees),
       Number(maxFees)
     );
